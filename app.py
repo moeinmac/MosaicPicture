@@ -54,3 +54,43 @@ def createMosaicImg(mosaicImgs, mosaicSize,mosaicCount):
       blankImg[i * w: (i + 1) * w, j * h: (j + 1) * h] = mosaicImgs[index]
       index +=1
   return blankImg
+
+
+mainImage = cv2.imread("main.jpg")
+
+sampleImgs = readSamples("samples")
+
+mosaicSize = (10, 10)
+mosaicCount = (
+    int(mainImage.shape[0] / mosaicSize[0]), int(mainImage.shape[1] / mosaicSize[1]))
+
+
+
+resizeMainImage = (mosaicCount[1]*mosaicSize[1], mosaicCount[0]*mosaicSize[0])
+mainImage = cv2.resize(mainImage, resizeMainImage,interpolation=cv2.INTER_AREA)
+
+
+
+resizeSamples(sampleImgs, mosaicSize)
+
+avgSamples = []
+for sample in sampleImgs:
+  avgSamples.append(avgRGB(sample))
+
+croppedImages = cropImage(mainImage, mosaicSize, mosaicCount)
+
+print("Start Processing Image...")
+mosaicImages = []
+for img in croppedImages:
+  index = getBestMatch(avgRGB(img), avgSamples)
+  mosaicImages.append(sampleImgs[index])
+
+finalImage = createMosaicImg(mosaicImages,mosaicSize,mosaicCount)
+print("Image Processing is finished.")
+
+cv2.imwrite('final.jpg', finalImage)
+
+cv2.imshow("Main Image", mainImage)
+cv2.imshow("Final Image", finalImage)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
