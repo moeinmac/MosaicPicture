@@ -6,7 +6,6 @@ import math
 def readSamples(directory):
   sampleImgs = []
   samplesFiles = os.listdir(directory)
-  print(samplesFiles)
   for file in samplesFiles:
     truePath = os.path.abspath(os.path.join(directory, file))
     sampleImg = cv2.imread(truePath)
