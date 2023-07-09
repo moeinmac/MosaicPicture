@@ -35,3 +35,11 @@ def cropImage(image, mosaicSize, mosaicCount):
       croppedImgs.append(image[i * w: (i + 1) * w, j * h: (j + 1) * h])
   return (croppedImgs)
 
+def getBestMatch(imgAvg, samplesAvg):
+  sampleDists = []
+  for sAVG in samplesAvg:
+    dist = math.dist(imgAvg, sAVG)
+    sampleDists.append(dist)
+
+  minDist = np.min(sampleDists)
+  return sampleDists.index(minDist)
