@@ -43,3 +43,14 @@ def getBestMatch(imgAvg, samplesAvg):
 
   minDist = np.min(sampleDists)
   return sampleDists.index(minDist)
+
+def createMosaicImg(mosaicImgs, mosaicSize,mosaicCount):
+  h, w = mosaicSize
+  row, col = mosaicCount
+  blankImg = np.zeros((row*h, col*w, 3), np.uint8)
+  index = 0
+  for j in range(col):
+    for i in range(row):
+      blankImg[i * w: (i + 1) * w, j * h: (j + 1) * h] = mosaicImgs[index]
+      index +=1
+  return blankImg
