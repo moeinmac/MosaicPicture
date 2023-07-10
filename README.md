@@ -11,21 +11,27 @@ The main library used in this project is OpenCV, which is used for image process
 
 # Project functions review
 - readSamples
+  
 This function takes the name of a directory as input and saves all sample images in an array, returning it as output. The purpose of using this function is to read sample images from the target directory.
 
 - resizeSamples
+
 This function takes an array of sample images as input and resizes these images according to the size of the mosaics requested by the user. The purpose of this function is to standardize the size of all sample images with the input size.
 
 - avgRGB
+
 This function takes an image as input and calculates the average color in its red, green, and blue channels, returning it as an array. The purpose of this function is to compare the minimum average color between two target images for replacement in the original image.
 
 - cropImage
+
 This function takes an image, mosaic size, and the required number of mosaics (horizontally and vertically) as input. It then cuts the target image based on the number of mosaics. This is done using nested loops, and each time a section of the target image is separated equal to the mosaic size, it is saved in an array. The output of this function is the saved array of cropped images. The purpose of this function is to divide the original image into smaller sections for comparing their average color intensity.
 
 - getBestMatch
+  
 This function receives two inputs: a cropped section of the original image and the average color of all sample images. It calculates the distance between these two average colors, which are represented as vectors, using the L2 norm, and selects the sample image with the smallest color distance.
 
 - createMosaicImg
+  
 The functionality of this function is almost similar to cropImage, with the difference that we provide it with a sample image and want to replace the original image with it. For this purpose, we create an empty image with the length and width of the original image and traverse it like the algorithm in the cropImage function, placing the desired sample image in it.
 
 # Algorithm exploration
