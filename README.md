@@ -3,6 +3,13 @@
 - A mosaic image is composed of multiple very small images that are visible when viewed up close, but give a different image when viewed from a distance. In this project, we aim to create such images.
 - This project is written in Python, and we recommend reading the documentation thoroughly to familiarize yourself with each component of the project and its problem-solving algorithm.
 
+<div align="center">
+
+![](final.jpg)
+
+</div>
+
+
 # Project objective
 The objective of this project is to implement a mosaic image generator using the OpenCV library. The mosaic image generator takes an input of a target image and a set of source images, divides the image into a specific grid of tiles based on a predefined network of tiles, and then replaces each tile with the most similar source image.
 
@@ -44,8 +51,18 @@ The functionality of this function is almost similar to cropImage, with the diff
 7. At this stage, we replace the best sample images from the previous stage, which are specified as indices, with the original image.
 8. Finally, we save and display the final image.
 
-5. Perform a preview on all sample images and calculate their average colors.
-6. Now, cut the original image based on the required mosaics and their size.
-7. At this stage, our image processing has just begun, and now we compare the average of each cropped image with each sample image, selecting the one with the minimum distance.
-8. At this stage, we replace the best sample images from the previous stage, which are specified as indices, with the original image.
-9. Finally, we save and display the final image.
+
+# Input : 
+<div align="center">
+
+![](main.jpg)
+
+</div>
+
+# Output : 
+
+<div align="center">
+
+![](final.jpg)
+
+</div>
